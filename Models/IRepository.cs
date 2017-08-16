@@ -10,9 +10,6 @@ namespace BookingApi.Models
         IEnumerable<Payment> Payments { get; }
         Payment this[int id] { get; }
 
-        Payment AddPayment(Payment payment);
-        Payment UpdatePayment(Payment payment);
-
         void DeletePayment(int id);
     }
 }

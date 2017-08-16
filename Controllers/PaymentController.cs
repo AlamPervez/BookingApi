@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BookingApi.Models;
 
+
 namespace BookingApi.Controllers
 {
     [Route("api/[controller]")]
@@ -21,7 +22,7 @@ namespace BookingApi.Controllers
         [HttpGet]
         public IEnumerable<Payment> Get()
         {
-           
+
             return repository.Payments;
 
             //ToDo: Enhance this method to implement pagination and sort logic:
@@ -30,9 +31,23 @@ namespace BookingApi.Controllers
             //page only.
         }
 
-        
-        // GET api/payment/report
-        [HttpGet("{currency}")]
+        // GET api/payment/5
+        [HttpGet("{id}")]
+        public Payment Get(int id)
+        {
+            return repository[id];
+        }
+
+        // POST api/payment
+        [HttpPost]
+        public Payment Post([FromBody] Payment payment)
+        {
+            //ToDo: Implement the create payment code instance with validation on all fields
+            throw new NotImplementedException();
+        }
+
+        // GET api/payment/report/USD
+        [HttpGet("report/{currency}")]
         public IEnumerable<Payment> Get(Currency currency)
         {
             throw new NotImplementedException();
@@ -43,24 +58,13 @@ namespace BookingApi.Controllers
         }
 
 
-        // POST api/payment
-        [HttpPost]
-        public Payment Post([FromBody] Payment payment)
+        // DELETE api/payment/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
         {
-            //ToDo: Implement the create payment code instance with validation on all fields
-            throw new NotImplementedException();
+            repository.DeletePayment(id);
         }
 
-        // PUT api/payment/5
-        [HttpPut]
-        public Payment Put([FromBody]Payment payment)
-        {
-            //ToDo: Implement the update payment code with validation on all fields
-            throw new NotImplementedException();
-        }
-
-    //ToDo: Implement the Web API method to delete a payment record.
-       
     }
 
 }

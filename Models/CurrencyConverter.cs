@@ -17,17 +17,17 @@ namespace BookingApi.Models
             //conversion rates w.r.t USD
             rates.Add(Currency.EUR, 0.84998M);
             rates.Add(Currency.INR, 64.17M);
-            rates.Add(Currency.GBP,0.77046M);
+            rates.Add(Currency.GBP, 0.77046M);
             rates.Add(Currency.USD, 1M);
         }
 
-        //3 EUR 1 INR
-       public static decimal Convert(Currency from, Currency to, decimal value)
+        //EUR, USD, 200
+        public static decimal Convert(Currency from, Currency to, decimal value)
         {
-     
-         return value / rates[from] * rates[to];
-           
+
+            return value / rates[from] * rates[to];
+
         }
-        
+
     }
 }
